@@ -1,0 +1,36 @@
+# load the graphics
+imgMaze = image.load(bigmaze2.bmp)
+imgFont = image.load(font.bmp)
+
+# create a combined, optimized palette
+palMaze = imgMaze.getPalette
+palMaze.addColors(imgFont)
+clr = color.new(0,0,0)
+palMaze.setColor(0, clr)
+imgMaze.remap(palMaze)
+imgFont.remap(palMaze)
+
+palMaze.quantize(5,5,5)
+imgMaze.setPalette(palMaze)  # must setPalette since colors may not be same any longer
+imgFont.setPalette(palMaze)
+
+palMaze.optimize
+imgMaze.remap(palMaze)
+imgFont.remap(palMaze)
+
+# create a map & tile set for both maze and font
+tmMaze = map.new(imgMaze)
+tsMaze = tmMaze.getTileSet
+
+tmFont = map.new(imgFont)
+tsFont = tmFont.getTileSet
+
+# generate source
+cg = codegen.new
+cg.open("maze.inl")
+cg.generate(tsFont)
+cg.generate(tsMaze)
+cg.generate(tmMaze)
+cg.generate(palMaze)
+cg.close
+quit

@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "The SGADE", "The SGADE.vcproj", "{E45E4511-77BB-40C1-88E9-E872FD967581}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample", "sample\Sample.vcproj", "{CFD02BC6-9DC5-4540-9437-99A3D4E95760}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectName0 = SGADE
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
+		SolutionUniqueID = {E6B364F4-A0EB-4EDD-B6C7-D08413051BBF}
+		SccProjectUniqueName1 = sample\\Sample.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = true
+		SccProjectFilePathRelativizedFromConnection1 = sample\\
+		SccProjectUniqueName2 = The\u0020SGADE.vcproj
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{CFD02BC6-9DC5-4540-9437-99A3D4E95760}.0 = {E45E4511-77BB-40C1-88E9-E872FD967581}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E45E4511-77BB-40C1-88E9-E872FD967581}.Debug.ActiveCfg = Debug|Win32
+		{E45E4511-77BB-40C1-88E9-E872FD967581}.Debug.Build.0 = Debug|Win32
+		{E45E4511-77BB-40C1-88E9-E872FD967581}.Release.ActiveCfg = Release|Win32
+		{E45E4511-77BB-40C1-88E9-E872FD967581}.Release.Build.0 = Release|Win32
+		{CFD02BC6-9DC5-4540-9437-99A3D4E95760}.Debug.ActiveCfg = Debug|Win32
+		{CFD02BC6-9DC5-4540-9437-99A3D4E95760}.Debug.Build.0 = Debug|Win32
+		{CFD02BC6-9DC5-4540-9437-99A3D4E95760}.Release.ActiveCfg = Release|Win32
+		{CFD02BC6-9DC5-4540-9437-99A3D4E95760}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="Sample"
+	ProjectGUID="{CFD02BC6-9DC5-4540-9437-99A3D4E95760}"
+	SccProjectName="SGADE"
+	SccAuxPath=""
+	SccLocalPath=".."
+	SccProvider="MSSCCI:NXN alienbrain"
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="0"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="make --file build/Makefile"
+				ReBuildCommandLine="make --file build/Makefile rebuild"
+				CleanCommandLine="make --file build/Makefile clean"
+				Output="Sample.gba"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
+			ConfigurationType="0"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="make --file build/Makefile"
+				ReBuildCommandLine="make --file build/Makefile rebuild"
+				CleanCommandLine="make --file build/Makefile clean"
+				Output="Sample.gba"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			<File
+				RelativePath="source\Sample.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffect3DScene.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectCredits.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectMap.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectMultiPlayer.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectSprites.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectTiles.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectTriangle.c">
+			</File>
+			<File
+				RelativePath="source\SampleEffectWelcome.c">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath="include\SampleEffects.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Build"
+			Filter="">
+			<File
+				RelativePath="build\Makefile">
+			</File>
+			<File
+				RelativePath="build\crt0.S">
+			</File>
+			<File
+				RelativePath="build\lnkscript">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

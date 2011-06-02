@@ -1,0 +1,270 @@
+// ----------------------------------------------------------------------------
+/*! 
+	\author:	Mark T. Price, Jaap Suter, et. al.
+	\brief:		Change log of Socrates
+	
+	Visit http://www.sgade.com/ for more information.
+
+	Copyright (C) 2002-2005 by the SGADE authors
+	For conditions of distribution and use, see copyright notice in SoLicense.txt
+*/
+// ----------------------------------------------------------------------------
+
+SGADE Release 1.02 - July 10, 2005
+
+* Entirely new global makefile with automatic dependency checking
+* Minor code formatting changes & documentation clean-ups
+
+* SoBkg
+- Added support for 16-color tiles with function SoBkgWriteBlock16Color
+- Added new printing functions SoBkgPrint, SoBkgPrintAt, SoBkgPrintf,
+  SoBkgSetFont, SoBkgGetFont, SoBkgSetTextCursor, SoBkgGetTextCursor,
+  SoBkgSetTextWindow, SoBkgSetTextWrapping
+- new functions SoBkgIsEnabled, SoBkgLoadSolidColorTile
+
+* SoBkgConsole
+- New debugging console. Can be used to display debugging messages on the GBA
+  screen.  Requires one background.
+
+* SoBkgFont
+- Created finalized SoBkgFont structure & macros
+
+* SoDebug
+- Added new tile-mode assert as default assert handler
+
+* SoPalette
+- Added macros to directly access each of the sixteen 16 color palettes for
+  both sprites and backgrounds.
+- Added macros to construct and deconstruct color values
+
+* SoSprite
+- Added support for 16-color sprites with function SoSpriteSet16ColorPaletteIndex
+
+* SoSpriteMemManager
+- Added new functions to dynamically load sprite data:
+  SoSpriteMemManagerLoadFrame, SoSpriteMemManagerCopyFrame
+
+* Sample
+- Changed SampleEffectCredits.c to demonstrate the use of font changes
+- changed SampleEffectMap.c to use Bkg printing functions
+- Changed SampleEffectWelcome.c to demonstrate the use of the tile-mode
+  assert system
+  
+
+Changes from interim 1.02 (Developmental) releases
+
+=== SGADE Library
+
+* SoBkg
+- Added SoBkgDrawString() function to draw a string to a tiled background
+- Fixed bug in code to clear background 
+- Added new SoBkgFill, SoBkgClearIndirect functions
+- Changed SoBkgSetup to automatically reset the bkg scroll offset
+- Modified all SoBkgWrite* functions to wrap instead of truncating when the
+  data goes off the edge of the screen.  This is required to support the new
+  SoBkgMap module
+
+* SoBkgCreditScroll
+- New scrolling credits module
+
+* Added SoBkgFont -- new module for tile-based fonts
+
+* SoBkgMap
+- Renamed old SoBkgMap structure to "SoTileMap"
+- Implemented new SoBkgMap module to support arbitrarily large virtual
+  scrolling tile maps
+
+* SoBkgMemManager
+- Fixed which caused crashes when using tilesets with an odd number of tiles
+
+* SoDebug
+- Added SoDebugPrintf() and support function dstrnlen()
+- Added several debug printing helper functions
+
+* SoDisplay
+- Modified SoDisplaySetMode function to clear all active effect bits and to
+  always default the display priority of bitmap backgrounds to 3 (lowest)
+
+* SoDMA
+- Added three new DMA macro functions: SO_DMA_MEMCPY, SO_DMA_MEMCPY_REV,
+  SO_DMA_MEMSET all three use DMA channel 3 and provide a simplified API
+  for common memory functions
+- Changed Bkg & Tile functions to use DMA in place of copy-loops
+
+* SoImage
+- Added SoImageBkgLoad() function to load a linear image buffer to tile BKG
+
+* SoKeys
+- Added key repeat support functions in SoKeys (not yet fully functional)
+
+* SoMath
+- Added new SO_ABS (absolute value) to SoMath.h
+
+* SoMode4Renderer
+- Fixed bug in SoMode4RendererDrawCrossFadeImage()
+- Removed redundant code in SoMode4RendererDrawNumber
+
+* SoSprite
+- Added SoSpriteSetPriority function to set sprite display priorities
+
+* SoSpriteMemManager
+- Added SoSpriteMemManagerCopyFromImage() copies graphic from image to existing
+  sprite
+- Added SoSpriteMemManagerLoadFromImage() loads graphic from image to new
+  sprite
+
+* SoTile
+- Added SoTileSetCopyFromLinearBuffer() - converts linear image layout to tile
+  layout
+
+* SoTimer
+- Added SoTimerClockGetTotalMilliseconds() returns elapsed milliseconds since
+  clock start
+- Added SoTimerClockGetTotalSeconds() to get total elapsed seconds since start
+- Fixed bug in SoTimerClockGetTotalSeconds()
+
+* Completed conversion of Visual Studio workspace to Visual Studio .NET format
+* Added new 'rebuild' make target to do complete clean rebuilds
+* Converted many class accessor functions to macros
+* Did clean-up editing on the comments in about 50% of the source files
+
+=== SGADE Tools
+
+* Extended SoConvert tool to support Tile-based images.  The sample ROM's data
+  directory includes a SoConvert script that uses this feature.
+
+=== SGADE Sample
+
+* Added demonstration of SoBkgMap to the Sample ROM
+
+
+SGADE Release 1.01 -- July 30, 2002
+
+* Formalized licensing terms.  Details can be found in SoLicense.txt
+* Changed name to Socrates Gameboy Advance Development Engine (used to be 'Environment')
+          to reflect the fact that it's really "just a library".
+* Added SoBkg, SoBkgMemManager, SoBkgMap, SoBkgFont classes
+- SoBkg            holds all functions related to handling specific backgrounds
+- SoBkgMemManager  handles dynamic loading of tile graphics data to BG VRAM as it is used
+- SoBkgMap         holds tile index data for backgrounds (also placeholder for code to handle
+                   the dynamic loading of tile index data to backgrounds)
+- SoBkgFont        (just a placeholder for now) handles mapping of character values to
+                   tile graphics
+* Added SoDisplaySetMode, SoDisplayGetMode and SoDisplayEnable functions.  Modified SoMode4Renderer
+        to call SoDisplaySetMode
+* Added complete general memory allocator SoMemManager
+* Added SoTileSetBkgLoad function to load tile date to BG VRAM
+* Added tile-mode demo to Sample
+* Added debug printing and breakpoint support for the BATGBA emulator
+* Added several debug printing helper functions
+* Added SO_MIN and SO_MAX macros to SoMath.h
+* Added SoMathFixedMultiplyByFraction function -- this is a full-precision fixed-point
+        multiply function that only works when the second argument is less than 1.0.
+        Modified SoCameraDistanceToFrustumPlane to use this new (faster) function
+* Updated library make file to include header file dependencies
+* Added Visual Studio .NET solution format project file
+
+SGADE Release 1.00 -- stability release June 8, 2002
+
+* Added new 'sofixedpoint' data type to show explicitly what values are expected
+  to be in fixed point and what values are not.  All functions that expect fixed
+  point values now use the new typedef.  Unfortunately, as always, there are
+  exceptions; objects/functions that can work with either fixed-point or whole
+  values (e.g. SoVector* objects, Multiply/Divide functions) have been left unchanged.
+* Split simple cube mesh source out of SoMesh.c into separate source file (SoMeshCube.c)
+* Added SO_DEPRECATED_FUNCTION macro & actually removed all deprecated functions
+  (there were only three of them: SoSystemInitialize, SoIntManagerAddInterruptHandler,
+  and SoIntManagerRemoveInterruptHandler)
+* Fixes for 16.16 format numbers (SO_FIXED_ONE_OVER_SLOW_ACCURATE, SoMathSqrt,
+  SoCameraInitialize)
+* Fixes for linkage with C++ (corrected 'extern "C"' declarations)
+* Replaced interrupt SoIntManagerInterruptHandler function with assembly code based
+  on one of the handlers in Jeff Frowein's crt0.s
+* Corrected expected vertex order in SoMode4PolygonRasterizerDrawSolidTriangleC() &
+  SoMode4PolygonRasterizerDrawSolidTriangle() and added checks for degenerate triangles
+* Added accurate/safe fixed-point multiply function: SoMathFixedMultiply().  The
+  SoCameraDistanceToFrustumPlane() function was changed to use this as it needs the
+  accuracy and is susceptable to fixed point overflow.
+* Renamed SoMathSqrt to SoMathFixedSqrt & deprecated old name.
+* Cleaned up Doxygen errors & touched up documentation source
+
+Some time ago: Changed all fixed point stuff from 17.15 to 16.16. Still doesn't work completely though. The 3D pipeline is broken now. 
+			   Needs to be fixed. But at the moment I'm not sure where exactly this is located....
+Some time ago: Rewrote the interrupt handler in Arm assembly. Only works on Mappy though. Needs to be fixed.
+28-4-2002: Fixed incredibly stupid bug in SoSpriteManager.c on line 246.
+ 3-3-2002: Fixed bug in SO_FIXED_MULTIPLY_SMALL_SMALL
+20-3-2002: From now on, only a thumb-interwork library is generated.
+19-3-2002: Assembly files are now all with capital S instead of .s. Now GCC can parse them.
+18-3-2002: Rewrote the interrupt system, it's simpler thus faster now, we were doing too
+		   much in our interrupt handler anyway.
+18-3-2002: Fixed bugs in SoMultiPlayer module, it works now, but needs care, and a 
+		   little todo still. But it's in a usable state.
+17-3-2002: Finished new font system;
+16-3-2002: SoConverter no longer uses GetLongPathName, cause that didn't work in Win95. It
+		   now uses FindFirstFile iterating over all URL parts. Thanks Gabriele :) hehe.
+16-3-2002: Fixed bug in SoConverter input (converter selection)
+14-3-2002: SoMode4RendererDrawImage* functions now take SoImage structures.
+14-3-2002: Added Matt Hattems debug prints for MBV2 and Mappy environments. Thanks Mattem!
+14-3-2002: New files: SoDebug.h and .c. These now contain the assertion stuff;
+14-3-2002: -------------- Major overhaul ----------------------------
+		   Altough most changes are listed below, some other might have  slipped through.
+		   the new release after 14-3 has changed quite a bit, and I suggest approaching
+		   it carefully. It might bite. Mwuhauahahaha
+		   ----------------------------------------------------------
+13-3-2002: Sprites now use the SoSpriteAnimation structure.
+13-3-2002: Finished a FLC loader, but it seems to contain some bugs. Damnit.
+12-3-2002: SoTexture disappeared and is now replaced by the new and more generic 
+		   structure SoImage.
+12-3-2002: SoTileSet structure changed rigorously. Please see the code.
+12-3-2002: SoConverter tool finally done.
+ 8-3-2002: SoSpriteMemManagerLoad now uses a DMA copy.
+ 8-3-2002: Changed SoTextureGetTexture to SoTextureGetData to be consistent with SoTileSetGetData
+ 7-3-2002: Fixed bug in mosaic register setting, because that register turned out to be write only.
+ 7-3-2002: Fixed bug in SoKeysUpdate which made SoKeysPressed() and SoKeysRelease() simply not work..
+ 7-3-2002: SocratesInitialize() has become SoSystemInitialize()
+ 7-3-2002: Renamed Socrates.h to SoSystem.h and create a new file Socrates.h which includes
+		   all other headers. Now people only need to link the library, and include single header.
+ 7-3-2002: Removed the dis-assembly locators. Never used them anymore, and I doubt anybody else did.
+ 7-3-2002: Fixed bug in SoBackgroundManagerSetMosaic and SoSpriteManagerSetMosaic
+ 6-3-2002: Took the restructuring one step further, making Socrates a seperate .a library.
+ 3-3-2002: Fixed bug in SoSpriteManagerDisableSprites
+ 3-3-2002: Sprite manager no longer uses the VBlank interrupt handler, you have to call 
+ 		   an update yourself now. This fixes the 'jumpy' sprite bug.
+ 3-3-2002: Added guards around true, false, NULL and bool defines in Socrates.h
+ 3-3-2002: Changed the SoKeys module to a more flexible system. Still contains some bugs though...
+ 3-3-2002: Fixed bug in SoTimer.c
+ 2-3-2002: Switched from NMake to GNU Make so people don't need Visual Studio anymore. It
+ 		   can still be used if wanted though. The Visual Studio project simply calls the
+		   GNU-make tool.
+ 2-3-2002: Removed SoLinkScript and SoBoot.s, and replaced them with Jeff's Devrs crt0.S and lnkscript 
+		   in the build directory.
+ 2-3-2002: Changed the directory and build structure to a more clean one. Seperated application from library.	
+ 6-2-2002: Rewrote the sine and reciprocal tables to allow simpler changing of SO_FIXED_Q.
+ 6-2-2002: Moved the background mosaic stuff from SoDisplay to SoBackgroundManager.
+ 6-2-2002: Added the SoTileSetGetTileNumIndices method to the SoTileSet module for easy
+ 		   sprite animation.
+ 5-2-2002: Added the SoFlashMem module to the makefile (it wasn't linked in), thanks Benjamin!
+ 5-2-2002: New files: SoBackgroundManager.c and SoBackgroundManager.h
+ 5-2-2002: Gabriele wrote the SoEffects module.
+ 5-2-2002: New files: SoEffects.c and SoEffects.h
+ 5-2-2002: Added all mosaic functions to both SoDisplay (for backgrounds, will be moved
+ 		   to an SoBackgroundManager module later) and SoSpriteManager.
+ 4-2-2002: New files: SoWindow.c and SoWindow.h
+ 4-2-2002: Gabriele wrote a SoWindow module. It handles the two GBA windows. Excellent work
+ 		   Gabriele! I could add it without problems!
+ 3-2-2002: Started working on the SoSound module. It's experimental only and no clean interface
+ 		   is defined yet. So don't use it :).
+ 3-2-2002: New files: SoSound.c and SoSound.h
+ 2-2-2002: Fixed bug in polygon clipper where all vertices are out of the frustum, yet 
+		   the polygon is still visible (Thanks Gabriele).
+ 2-2-2002: Chanced naming of SoTransformSetTranslate to SoTransformSetTranslation and
+ 		   SoTransformReset to SoTransformMakeIdentity to improve consistency with 
+ 		   the SoMatrix module. Also changed SoCameraSetTranslate to SoCameraSetTranslation.
+ 		   (Thanks Gabriele).
+ 
+ 
+// --------------------------------------------------------------------------------------
+// EOF
+// --------------------------------------------------------------------------------------
+
+
