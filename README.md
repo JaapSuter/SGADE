@@ -1,11 +1,5 @@
-// --------------------------------------------------------------------------------------
-/*! 
-	\author:	Jaap Suter
-	
-	Visit http://www.suddenpresence.com/sgade/ for more information.
-*/
-// --------------------------------------------------------------------------------------
-
+![SGADE](//github.com/JaapSuter/SGADE/raw/master/documentation/sgade.gif)
+![SGADE](//github.com/JaapSuter/SGADE/raw/master/documentation/animated.gif)
 
 Hi, 
 
@@ -80,6 +74,8 @@ Thanks and goodluck. You'll know where to find me with any questions.
 Regards,
 
 Jaap Suter
+
+![SGADE](//github.com/JaapSuter/SGADE/raw/master/documentation/screens.jpg)
 
 // --------------------------------------------------------------------------------------
 // EOF;
